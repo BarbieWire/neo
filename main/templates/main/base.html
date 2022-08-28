@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sio Neo Logistics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+    {% block links %}
+        {# additional links here #}
+    {% endblock %}
+</head>
+<body>
+    {#  Header  #}
+    {% include 'main/components/header.html' %}
+
+    {% block content %}
+        {#  Content here  #}
+    {% endblock %}
+
+    {#  Footer  #}
+    {% include 'main/components/footer.html' %}
+
+<script src="{% static 'js/nav.js' %}" defer></script>
+</body>
+</html>

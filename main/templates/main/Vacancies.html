@@ -1,0 +1,48 @@
+{% extends "main/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/contactus.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vacancies.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <section class="main-section">
+        <div class="container">
+            <div class="text-box">
+                <hr class="line">
+                <h1 class="title">{% trans 'Vacancies' %}</h1>
+                <p class="desc">
+                    {% trans "A list of available job opportunities company provides at the moment" %}
+                </p>
+            </div>
+        </div>
+
+        <div class="container">
+            {% regroup vacancies by category as category_list %}
+            {% for group in category_list %}
+                <div class="box-align">
+                    <h2 class="category_title">{{ group.grouper }}</h2>
+                    <div class="jobs__wrapper">
+
+                        {% for vacancie in group.list %}
+                            <div class="job">
+                                <hr/>
+                                <div class="data__wrapper">
+                                    <h3>{{ vacancie.name }}</h3>
+                                    {% if vacancie.salary_to %}
+                                        <p>~{{ vacancie.salary_from }}€ - {{ vacancie.salary_to }}€</p>
+                                    {% else %}
+                                        <p>{{ vacancie.salary_from }}€</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

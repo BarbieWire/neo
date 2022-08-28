@@ -1,0 +1,216 @@
+{% load static %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sio Neo Logistics</title>
+    <meta name='viewport' content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'js/Carousel/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main_section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
+<body>
+<button class="scrollTop" id="scrollTop">
+    <object data="{% static 'assets/double_chevron_up.svg' %}"></object>
+</button>
+<header class="header-blank" id="navbar">
+    <div class="navbar-container">
+        <img src="{% static 'assets/logo.svg' %}" alt="logo" class="main-logo">
+
+        <input type="checkbox" id="menu_checkbox">
+        <label for="menu_checkbox">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
+
+        <nav>
+            <a href="/" class="nav-link bold">{% trans 'Home' %}</a>
+            <div class="nav-link" data-drop="true">
+                <p>{% trans 'Services' %}</p>
+                <div class="nav-dropdown">
+                    <a href="/{{ lang }}/vacancies">{% trans 'Vacancies' %}</a>
+                </div>
+            </div>
+            <a href="/{{ lang }}/about" class="nav-link">{% trans 'About us' %}</a>
+            <a href="/{{ lang }}/contact" class="nav-link">{% trans 'Contact us' %}</a>
+            <div class="lang-selector" data-drop="true">
+                {% if lang == 'ru' %}
+                    <img src="{% static 'assets/russiaflag.svg' %}" alt="flag">
+                {% else %}
+                    <img src="{% static 'assets/USAflag.svg' %}" alt="usa flag">
+                {% endif %}
+                <img src="{% static 'assets/chevron_down.svg' %}" alt="down" id="dropdown-button">
+
+                <div class="nav-dropdown">
+                    <a href="/en">
+                        <div class="language-option">
+                            <p>English</p>
+                            <img src="{% static 'assets/USAflag.svg' %}" alt="flag">
+                        </div>
+                    </a>
+                    <a href="/ru">
+                        <div class="language-option">
+                            <p>Русский</p>
+                            <img src="{% static 'assets/russiaflag.svg' %}" alt="flag">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<main>
+    <section class="main-section">
+        <div class="container">
+            <div class="absolute__wrapper">
+                <h1 class="title">Sia Neo Logistics</h1>
+                <h3 class="short-desc">
+                    {% trans 'A warehouse logistics center.' %}<br>
+                    {% trans 'Convenient access roads, within the city of Riga.' %} <br>
+                    {% trans 'Experienced staff and more than 10 years of successful experience in logistics' %}
+                </h3>
+                <button class="expl-btn" id="expl-more-btn">{% trans 'Explore more' %}</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="main">
+        <div class="container">
+            <div class="features__wrapper">
+                <div class="feature-container">
+                    <div class="feature-icon">
+                        <img src="{% static 'assets/icons/cube.svg' %}" alt="cube">
+                    </div>
+                    <h2 class="feature-title">{% trans 'Storage' %}</h2>
+                    <p class="feature-desc">
+                        {% trans 'The technical capabilities of the warehouse allow storage of up to 3200 pallets, on the territory of 4000 m2, while performing the processing of goods. There are also separate rooms with an alarm system intended for the storage of excise stamps.' %}
+                    </p>
+                </div>
+
+                <div class="feature-container">
+                    <div class="feature-icon">
+                        <img src="{% static 'assets/icons/thermometer.svg' %}" alt="thermometer">
+                    </div>
+                    <h2 class="feature-title">{% trans 'Storage temperature' %}</h2>
+                    <p class="feature-desc">
+                        {% trans 'Storage temperature in winter up to +10 degrees. There are modular storage rooms with lower temperature conditions.' %}
+                    </p>
+                </div>
+
+                <div class="feature-container">
+                    <div class="feature-icon">
+                        <img src="{% static 'assets/icons/alert.svg' %}" alt="alert">
+                    </div>
+                    <h2 class="feature-title">{% trans 'Safety' %}</h2>
+                    <p class="feature-desc">
+                        {% trans 'The warehouse has video surveillanceand an alarm system that complies withall regulatory enactments of theLatvian excise legislation.' %}
+                    </p>
+                </div>
+
+                <div class="feature-container">
+                    <div class="feature-icon">
+                        <img src="{% static 'assets/icons/guaranties.svg' %}" alt="guaranties">
+                    </div>
+                    <h2 class="feature-title">{% trans 'Guaranties' %}</h2>
+                    <p class="feature-desc">
+                        {% trans 'The warehouse also has an excise or customs guarantee and a transit guarantee.' %}
+                    </p>
+                </div>
+
+                <div class="feature-container">
+                    <div class="feature-icon">
+                        <img src="{% static 'assets/icons/pull.svg' %}" alt="equip">
+                    </div>
+                    <h2 class="feature-title">{% trans 'Equipment' %}</h2>
+                    <p class="feature-desc">
+                        {% trans 'The warehouse is partially equipped with 3 and 4 tier racks. Our company has the appropriate equipment for scanning Russian excise stamps.' %}
+                    </p>
+                </div>
+
+                <div class="feature-container">
+                    <div class="feature-icon">
+                        <img src="{% static 'assets/icons/llock.svg' %}" alt="lock">
+                    </div>
+                    <h2 class="feature-title">{% trans 'Territory' %}</h2>
+                    <p class="feature-desc">
+                        {% trans "The warehouse complex is a separate fenced area, with round-the-clock physical security. Possibility to park vehicles for a long time." %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="partners__wrapper">
+                <div class="partners-stroke">
+                    <hr class="half-line">
+                    <p>{% trans 'Partners' %}</p>
+                    <hr class="half-line">
+                </div>
+                <div class="logo__wrapper">
+                    <img src="{% static 'assets/logos/download 1.png' %}" alt="logo">
+                    <img src="{% static 'assets/logos/5-inservis 1.png' %}" alt="logo">
+                    <img src="{% static 'assets/logos/download 2.png' %}" alt="logo">
+                    <img src="{% static 'assets/logos/download 3.png' %}" alt="logo">
+                </div>
+                <hr class="bottom-line">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="background-gray">
+            <div class="container">
+                <div class=gallery__wrapper>
+                    <div>
+                        <h2 class="gallery-title">{% trans 'Gallery' %}</h2>
+                        <p class="gallery-desc">
+                            Lorem Ipsum is simply dummy
+                            text of the printing and typesetting industry. Lorem
+                            Ipsum has been the industry's standard dummy
+                            text ever since the 1500s, when an unknown printer took
+                            a galley of type and scrambled it to make a type specimen book.
+                            It has survived not only five
+                            centuries, but also the leap into electronic typesetting,
+                            remaining essentially unchanged. It was
+                            popularised in the 1960s with the release of
+                            Letraset sheets containing Lorem Ipsum passages, and
+                            more recently with desktop publishing software like
+                            Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                    </div>
+                    <div id="gallery-container">
+                        <object data="{% static 'assets/3 dots.svg' %}" class="dots three"></object>
+                        <object data="{% static 'assets/9 dots.svg' %}" class="dots nine"></object>
+
+                        <button class="arr-button left" data-direction="left">
+                            <img src="{% static 'assets/chevron_left.svg' %}" alt="left">
+                        </button>
+                        <div id="gallery">
+                            <img src="{% static 'assets/carousel/galleryItem1.jpg' %}" alt="item1" class="slide">
+                            <img src="{% static 'assets/carousel/galleryItem2.jpg' %}" alt="item1" class="slide">
+                        </div>
+                        <button class="arr-button right" data-direction="right">
+                            <img src="{% static 'assets/chevron_right.svg' %}" alt="right">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'main/components/footer.html' %}
+</main>
+<script src="{% static 'js/Carousel/script.js' %}" defer></script>
+<script src="{% static 'js/app.js' %}" defer></script>
+<script src="{% static 'js/nav.js' %}" defer></script>
+</body>
+</html>
