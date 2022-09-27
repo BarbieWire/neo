@@ -1,0 +1,220 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-27 14:42+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%"
+"100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\main\models.py:18
+msgid "Contact request"
+msgstr "Запрос"
+
+#: .\main\models.py:19
+msgid "Contact requests"
+msgstr "Запросы"
+
+#: .\main\models.py:29
+msgid "Vacancy category"
+msgstr "категория"
+
+#: .\main\models.py:30
+msgid "Vacancies categories"
+msgstr "Категории вакансий"
+
+#: .\main\models.py:34
+msgid "category"
+msgstr "категория"
+
+#: .\main\models.py:35
+msgid "vacancy name"
+msgstr "имя вакансии"
+
+#: .\main\models.py:36
+msgid "Salary from"
+msgstr "зарплата от"
+
+#: .\main\models.py:38
+msgid "not necessary field"
+msgstr "не обязательное поле"
+
+#: .\main\models.py:38
+msgid "Salary to"
+msgstr "зарплата до"
+
+#: .\main\models.py:48
+msgid "Vacancy"
+msgstr "Вакансия"
+
+#: .\main\models.py:49 .\main\templates\main\Vacancies.html:16
+#: .\main\templates\main\components\header.html:24
+msgid "Vacancies"
+msgstr "Вакансии"
+
+#: .\main\templates\main\ContactUs.html:17
+#: .\main\templates\main\components\header.html:32
+msgid "Contact us"
+msgstr "Связаться с нами"
+
+#: .\main\templates\main\ContactUs.html:19
+msgid ""
+"Have a question? Feel free to contact us. Our team will try to respond you "
+"back as soon as possible"
+msgstr ""
+"Появился вопрос? Не стесняйтесь связаться с нами. Наша команда постарается "
+"ответить вам как можно скорее"
+
+#: .\main\templates\main\ContactUs.html:22
+msgid "Or you can use your phone to get in touch with us:"
+msgstr "Или вы можете связаться с нами по номеру телефона:"
+
+#: .\main\templates\main\ContactUs.html:34
+msgid "Name"
+msgstr "Имя"
+
+#: .\main\templates\main\ContactUs.html:42
+msgid "Email"
+msgstr "Адрес электронной почты"
+
+#: .\main\templates\main\ContactUs.html:49
+msgid "Message"
+msgstr "Сообщение"
+
+#: .\main\templates\main\ContactUs.html:54
+msgid "Submit"
+msgstr "Подтвердить"
+
+#: .\main\templates\main\Vacancies.html:18
+msgid "A list of available job opportunities company provides at the moment"
+msgstr ""
+"Список доступных вакансий, которые компания предоставляет на данный момент"
+
+#: .\main\templates\main\components\header.html:18
+msgid "Home"
+msgstr "Главная"
+
+#: .\main\templates\main\components\header.html:21
+msgid "Services"
+msgstr "Услуги"
+
+#: .\main\templates\main\components\header.html:29
+msgid "About us"
+msgstr "О нас"
+
+#: .\main\templates\main\index.html:19
+msgid "A warehouse logistics center."
+msgstr "Складской логистический центр."
+
+#: .\main\templates\main\index.html:20
+msgid "Convenient access roads, within the city of Riga."
+msgstr "Удобные подъездные пути, в черте города Риги."
+
+#: .\main\templates\main\index.html:21
+msgid ""
+"Experienced staff and more than 10 years of successful experience in "
+"logistics"
+msgstr ""
+"Опытный персонал и более 10 лет успешного опыта работы в сфере логистики"
+
+#: .\main\templates\main\index.html:23
+msgid "Explore more"
+msgstr "Узнать больше"
+
+#: .\main\templates\main\index.html:34
+msgid "Storage"
+msgstr "Хранилище"
+
+#: .\main\templates\main\index.html:36
+msgid ""
+"The technical capabilities of the warehouse allow storage of up to 3200 "
+"pallets, on the territory of 4000 m2, while performing the processing of "
+"goods. There are also separate rooms with an alarm system intended for the "
+"storage of excise stamps."
+msgstr ""
+"Технические возможности склада позволяют хранение до 3200 паллет, на "
+"территории 4000 м2, при этом выполняя обработку товара. Также имеются "
+"отдельные помещения с сигнализацией, предназначенные для хранения акцизных "
+"марок"
+
+#: .\main\templates\main\index.html:44
+msgid "Storage temperature"
+msgstr "Температура хранилища"
+
+#: .\main\templates\main\index.html:46
+msgid ""
+"Storage temperature in winter up to +10 degrees. There are modular storage "
+"rooms with lower temperature conditions."
+msgstr ""
+"Температура хранения зимой до +10 градусов. Имеются модульные помещения для "
+"хранения грузов с более низким температурным режимом"
+
+#: .\main\templates\main\index.html:54
+msgid "Safety"
+msgstr "Безопастность"
+
+#: .\main\templates\main\index.html:56
+msgid ""
+"The warehouse has video surveillance and an alarm system that complies "
+"withall regulatory enactments of the Latvian excise legislation."
+msgstr ""
+"Склад имеет камеры видеонаблюдения и системы тревоги которые cоответствуют"
+"всем нормативным актам латвийского акцизного законодательства."
+
+#: .\main\templates\main\index.html:64
+msgid "Guaranties"
+msgstr "Гарантии"
+
+#: .\main\templates\main\index.html:66
+msgid ""
+"The warehouse also has an excise or customs guarantee and a transit "
+"guarantee."
+msgstr ""
+"Склад также имеет акцизное или таможенноге гарантийное обеспечение и "
+"транзитную гарантию"
+
+#: .\main\templates\main\index.html:74
+msgid "Equipment"
+msgstr "Оборудование"
+
+#: .\main\templates\main\index.html:76
+msgid ""
+"The warehouse is partially equipped with 3 and 4 tier racks. Our company has "
+"the appropriate equipment for scanning excise stamps."
+msgstr ""
+"Склад частично оборудован 3-х и 4-х ярусными стеллажами. Наша компания имеет "
+"соответствующее оборудование для сканирования акцизных марок"
+
+#: .\main\templates\main\index.html:84
+msgid "Territory"
+msgstr "Территория"
+
+#: .\main\templates\main\index.html:86
+msgid ""
+"The warehouse complex is a separate fenced area, with round-the-clock "
+"physical security. Possibility to park vehicles for a long time."
+msgstr ""
+"Складской комплекс является отдельной огороженой территорией, с "
+"круглосуточной физической охраной. Имеется возможность стоянки транспортных "
+"средств на длительный срок"
+
+#: .\main\templates\main\index.html:97
+msgid "Partners"
+msgstr "Партнеры"
+
+#: .\main\templates\main\index.html:115
+msgid "Gallery"
+msgstr "Галерея"

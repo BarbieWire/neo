@@ -1,0 +1,59 @@
+{% load static %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+
+<header class="header-blank" id="navbar">
+    <div class="navbar-container">
+        <a href="/"><img src="{% static 'assets/logo.svg' %}" alt="logo" class="main-logo"></a>
+        <input type="checkbox" id="menu_checkbox">
+        <label for="menu_checkbox">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
+        <nav>
+            {% with url_name=request.resolver_match.url_name %}
+                <a href="/" class="nav-link {% if url_name == 'main' %} highlight {% endif %}">
+                    {% trans 'Home' %}
+                </a>
+                <div class="nav-link" data-drop="true">
+                    <p>{% trans 'Services' %}</p>
+                    <div class="nav-dropdown">
+                        <a href="/vacancies" class="nav-link">
+                            {% trans 'Vacancies' %}
+                        </a>
+                    </div>
+                </div>
+                <a href="/about" class="nav-link {% if url_name == 'about' %} highlight {% endif %}">
+                    {% trans 'About us' %}
+                </a>
+                <a href="/contact" class="nav-link {% if url_name == 'contact' %} highlight {% endif %}">
+                    {% trans 'Contact us' %}
+                </a>
+            {% endwith %}
+            <div class="lang-selector" data-drop="true">
+                {% if lang == 'ru' %}
+                    <img src="{% static 'assets/russiaflag.svg' %}" alt="flag">
+                {% else %}
+                    <img src="{% static 'assets/USAflag.svg' %}" alt="usa flag">
+                {% endif %}
+                <img src="{% static 'assets/chevron_down_gray.svg' %}" alt="down" id="dropdown-button">
+                <div class="nav-dropdown">
+                    <a href="/en" data-lang="en">
+                        <div class="language-option">
+                            <p>English</p>
+                            <img src="{% static 'assets/USAflag.svg' %}" alt="flag">
+                        </div>
+                    </a>
+                    <a href="/ru" data-lang="ru">
+                        <div class="language-option">
+                            <p>Русский</p>
+                            <img src="{% static 'assets/russiaflag.svg' %}" alt="flag">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

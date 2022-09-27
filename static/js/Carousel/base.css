@@ -1,0 +1,14 @@
+.carousel__wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-track {
+    overflow: hidden;
+    cursor: grab;
+}
+
+.carousel-slide {
+    float: left;
+    min-height: 2px;
+}

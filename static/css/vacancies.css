@@ -1,0 +1,146 @@
+.main-section {
+    min-height: 90vh;
+}
+
+.text-box {
+    padding-top: 280px;
+    left: 0;
+}
+
+.box-align {
+    margin-top: 48px;
+}
+
+.box-align:last-child {
+    margin-bottom: 48px;
+}
+
+.jobs__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.job {
+    width: 333px;
+    height: 68px;
+    border: 1px solid var(--soft-green);
+    border-radius: 5px;
+    position: relative;
+    margin-right: 38px;
+    margin-top: 18px;
+}
+
+.job > hr {
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 20px;
+    background-color: var(--soft-green);
+}
+
+.data__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.data__wrapper h3, p {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.data__wrapper p {
+    color: var(--text-gray);
+}
+
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.strip__wrapper {
+    width: min-content;
+    padding-top: 100px;
+    height: min-content;
+}
+
+.track {
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+    align-items: center;
+    display: flex;
+}
+
+.flex-option {
+    width: 225px;
+    height: 225px;
+    float: left;
+    box-shadow: 3px 3px 10px rgba(0,0, 0, 0.1),
+                5px 2px 20px rgba(0, 0, 0, .04);
+    border-radius: 0.5em;
+    position: relative;
+}
+
+.upper-tab {
+    width: 100%;
+    height: 50%;
+    background: black;
+    border-radius: 10px 10px 0 0;
+}
+
+.lower-tab {
+    width: 100%;
+    height: 50%;
+}
+
+.vacancies-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 12px;
+    margin-top: 10px;
+}
+
+.par {
+    font-weight: bold;
+    font-size: 12px;
+    max-width: 60%;
+    margin-left: 12px;
+    margin-top: 12px;
+    color: #A5A5A5;
+    padding: 0;
+}
+
+.play {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #9EDB5C;
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.play:hover {
+    width: 55px;
+    height: 55px;
+}
