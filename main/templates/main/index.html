@@ -10,21 +10,26 @@
 {% endblock %}
 
 {% block content %}
-    <main>
-        <section class="main-section">
+    <main class="main-content-wrapper">
+        <section id="section-main">
             <div class="container">
-                <div class="absolute__wrapper">
+
+                <div class="main-content">
                     <h1 class="title">Sia Neo Logistics</h1>
                     <h3 class="short-desc">
                         {% trans 'A warehouse logistics center.' %}<br>
                         {% trans 'Convenient access roads, within the city of Riga.' %} <br>
                         {% trans 'Experienced staff and more than 10 years of successful experience in logistics' %}
                     </h3>
-                    <button class="expl-btn" id="expl-more-btn">{% trans 'Explore more' %}</button>
+
+                    <div id="section10">
+                        <a href="#section-features"><span></span>Scroll</a>
+                    </div>
                 </div>
+
             </div>
         </section>
-        <section id="main">
+        <section id="section-features">
             <div class="container">
                 <div class="features__wrapper">
                     <div class="feature-container">
@@ -89,7 +94,7 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section id="section-partners">
             <div class="container">
                 <div class="partners__wrapper">
                     <div class="partners-stroke">
@@ -107,11 +112,11 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section id="section-gallery">
             <div class="background-gray">
                 <div class="container">
                     <div class=gallery__wrapper>
-                        <div>
+                        <div class="feature-container" style="margin-bottom: 0">
                             <h2 class="gallery-title">{% trans 'Gallery' %}</h2>
                             <p class="gallery-desc">
                                 Lorem Ipsum is simply dummy
@@ -135,10 +140,16 @@
                             <button class="arr-button left" data-direction="left">
                                 <img src="{% static 'assets/chevron_left.svg' %}" alt="left">
                             </button>
+
                             <div id="gallery">
-                                <img src="{% static 'assets/carousel/galleryItem1.jpg' %}" alt="item1" class="slide">
-                                <img src="{% static 'assets/carousel/galleryItem2.jpg' %}" alt="item1" class="slide">
+                                <img src="{% static 'assets/carousel/3.jpg' %}" alt="gallery-slide"
+                                     class="slide">
+                                <img src="{% static 'assets/carousel/2.jpg' %}" alt="gallery-slide"
+                                     class="slide">
+                                <img src="{% static 'assets/carousel/1.jpg' %}" alt="gallery-slide"
+                                     class="slide">
                             </div>
+
                             <button class="arr-button right" data-direction="right">
                                 <img src="{% static 'assets/chevron_right.svg' %}" alt="right">
                             </button>
@@ -149,7 +160,7 @@
         </section>
 
         <button class="scrollTop" id="scrollTop">
-            <object data="{% static 'assets/double_chevron_up.svg' %}"></object>
+            <img src="{% static 'assets/double_chevron_up.svg' %}" alt="pg-up">
         </button>
     </main>
 {% endblock %}
@@ -159,29 +170,15 @@
     <script src="{% static 'js/nav.js' %}"></script>
     <script src="{% static 'js/Carousel/script.js' %}"></script>
     <script>
-        const gallery = document.querySelector("#gallery")
-        const galleryContainer = document.querySelector('#gallery-container')
-
-        const instance = new Carousel(gallery)
-        galleryContainer.addEventListener('click', (event) => {
-            if (event.target.dataset && event.target.dataset?.direction) {
-                if (event.target.dataset.direction === 'left') instance.moveLeft()
-                else instance.moveRight()
-            }
-        })
-
         const scrollTop = document.querySelector("#scrollTop")
+        const header = document.querySelector(".header-blank")
+
         scrollTop.addEventListener("click", () => scrollTo(0, 0))
 
-        const header = document.querySelector(".header-blank")
         function handleScroll() {
             header.classList.toggle("active", window.scrollY > 0)
             scrollTop.classList.toggle("active", window.scrollY > 0)
         }
         window.addEventListener("scroll", handleScroll)
-
-        const mainSection = document.querySelector("#main")
-        const exploreButton = document.querySelector('#expl-more-btn')
-        exploreButton.addEventListener("click", () => mainSection.scrollIntoView())
     </script>
 {% endblock %}

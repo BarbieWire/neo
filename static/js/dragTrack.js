@@ -1,66 +1,70 @@
-const track = document.querySelector("#track")
-const nodes = document.querySelectorAll(".flex-option")
+class DragTrack {
+    constructor() {
+        this.track = document.querySelector("#track");
+        this.nodes = document.querySelectorAll(".flex-option");
+        this.point = 0;
+        this.dragX = 0;
+        this.colorize();
+        this.onMouseMove = this.onMouseMove.bind(this);
+        this.trackLenght = this.resizeTrack();
+        this.isMobile = window.detectMobile();
+        if (this.trackLenght > window.innerWidth) {
+            this.trackInitialize();
+        }
+    }
 
+    trackInitialize() {
+        this.track.style.cursor = "grab"
+        this.track.addEventListener(this.isMobile ? 'touchstart' : 'mousedown', e => {
+            e.preventDefault()
+            const pageX = this.isMobile ? e.changedTouches[0].pageX : e.pageX
+            this.dragX <= -100 ? this.point = 0 : this.point = this.dragX + pageX
+            this.track.addEventListener(this.isMobile ? 'touchmove' : 'mousemove', this.onMouseMove)
+            this.track.style.cursor = "grabbing"
+        })
+        window.addEventListener(this.isMobile ? 'touchend' : 'mouseup', e => {
+            e.preventDefault()
+            this.track.removeEventListener(this.isMobile ? 'touchmove' : 'mousemove', this.onMouseMove)
+            this.track.style.cursor = "grab"
+        })
+    }
 
-let point = 0
-let dragX = 0
+    colorize() {
+        const prefix = "008"
+        let color = 744
+        const nodes = document.querySelectorAll(".upper-tab")
+        nodes.forEach(el => {
+            el.style.backgroundColor = "#" + prefix + color
+            color += 10
+        })
+    }
 
+    resizeTrack() {
+        const margin = 30
+        this.nodes.forEach((node, index) => {
+            if (index === 0) return
+            node.style.marginLeft = `${margin}px`
+        })
 
-function colorize() {
-    const prefix = "008"
-    let color = 744
-    const nodes = document.querySelectorAll(".upper-tab")
-    nodes.forEach(el => {
-        el.style.backgroundColor = "#" + prefix + color
-        color += 10
-    })
-}
+        const trackLength = (this.nodes[0].getBoundingClientRect().width * this.nodes.length) + margin * this.nodes.length + margin
+        this.track.style.width = `${trackLength}px`
+        return trackLength
+    }
 
-function resizeTrack() {
-    const margin = 30
-    nodes.forEach((node, index) => {
-        if (index === 0) return
-        node.style.marginLeft = `${margin}px`
-    })
+    onMouseMove(event) {
+        const startPoint = this.dragX
+        const Xclient = this.isMobile ? event.touches[0].clientX : event.clientX
+        this.dragX = this.point - Xclient
 
-    const trackLength = (nodes[0].getBoundingClientRect().width * nodes.length) + margin * nodes.length + margin
-    track.style.width = `${trackLength}px`
-    return trackLength
-}
+        const leftOffset = this.dragX > 0
+        const rightOffset = this.track.getBoundingClientRect().right > (window.innerWidth / 1.3)
 
-function onMouseMove(event) {
-    const startPoint = dragX
-    dragX = point - event.clientX
-
-    const leftOffset = dragX > 0
-    const rightOffset = track.getBoundingClientRect().right > (window.innerWidth / 1.3)
-
-    if ((leftOffset && rightOffset) || (!rightOffset && dragX < startPoint)) {
-        track.style.transform = `translate3d(${-dragX}px, 0, 0)`
-    } else {
-        dragX = startPoint
+        if ((leftOffset && rightOffset) || (!rightOffset && this.dragX < startPoint)) {
+            this.track.style.transform = `translate3d(${-this.dragX}px, 0, 0)`
+        } else {
+            this.dragX = startPoint
+        }
     }
 }
 
-function trackInit() {
-    const trackLen = resizeTrack()
-    if (trackLen > window.innerWidth) {
-        track.style.cursor = "grab"
-        track.addEventListener('mousedown', e => {
-            e.preventDefault()
-            if (dragX <= -100) point = 0
-            else point = dragX + e.pageX
-            track.addEventListener('mousemove', onMouseMove)
-            track.style.cursor = "grabbing"
-        })
-
-        window.addEventListener('mouseup', e => {
-            e.preventDefault()
-            track.removeEventListener('mousemove', onMouseMove)
-            track.style.cursor = "grab"
-        })
-    }
-}
-
-colorize()
-trackInit()
+new DragTrack()

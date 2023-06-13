@@ -1,9 +1,13 @@
 class Carousel {
-    constructor(root, params = {initialSlide: 0}) {
+    constructor(root, params = {initialSlide: 0, gap: 20, dots: true}) {
         this.element = root
         this.children = root.childElementCount
         this.current = params.initialSlide
+        this.gapBetween = params.gap
 
+        this.moveOneStep = this.moveOneStep.bind(this)
+        this.moveLeft = this.moveLeft.bind(this)
+        this.moveRight = this.moveRight.bind(this)
 
         this.dragStop = this.dragStop.bind(this)
         this.dragStart = this.dragStart.bind(this)
@@ -13,44 +17,41 @@ class Carousel {
         this.addAdditionalStyling = this.addAdditionalStyling.bind(this)
         this.removeAdditionalStyling = this.removeAdditionalStyling.bind(this)
 
-        this.moveLeft = this.moveLeft.bind(this)
-        this.moveRight = this.moveRight.bind(this)
-
         this.manageHTML()
         this.setParams()
         this.setEvents()
-    }
 
-    moveLeft() {
-        if (this.current > 0) {
-            this.current -= 1
-            this.setParams()
-        }
-    }
-
-    moveRight() {
-        if (this.current + 1 < this.NodesArr.length) {
-            this.current += 1
-            this.setParams()
+        if (params.dots) {
+            this.drawDots = this.drawDots.bind(this)
+            this.drawDots()
         }
     }
 
     setParams() {
         this.width = this.element.getBoundingClientRect().width
-        this.track.style.width = `${this.width * this.children}px`
+
+        this.track.style.width = `${this.width * this.children + (this.children - 1) * this.gapBetween}px`
+        this.track.style.display = "flex"
+        this.track.style.gap = this.gapBetween + "px"
+
         this.NodesArr.forEach((slide) => {
             slide.style.width = this.width + "px"
         })
         this.xPosition = -this.width * this.current
-        this.xMax = -this.track.getBoundingClientRect().width / 2
+        this.xMax = -(this.children - 1) * this.width
         this.setPositioning(this.xPosition)
     }
 
     setEvents() {
-        window.addEventListener("resize", () => this.setParams())
+        window.addEventListener("resize", e => this.setParams(e))
 
-        this.track.addEventListener("pointerdown", e => this.dragStart(e))
-        window.addEventListener("pointerup", () => this.dragStop())
+        // mouse events
+        this.track.addEventListener("mousedown", e => this.dragStart(e))
+        window.addEventListener("mouseup", e => this.dragStop(e))
+
+        // touch events
+        this.track.addEventListener("touchstart", e => this.dragStart(e))
+        window.addEventListener("touchend", e => this.dragStop(e))
     }
 
     dragStart(event) {
@@ -58,15 +59,25 @@ class Carousel {
         // and other default browser actions
         event.preventDefault()
 
-        this.click = event.pageX
+        const touchType = event.type === "touchstart"
+        if (touchType)
+            this.click = event.touches[0].clientX
+        else
+            this.click = event.pageX
         this.startX = this.xPosition
 
         this.addAdditionalStyling()
-        window.addEventListener("pointermove", this.dragMove)
+        if (touchType) {
+            window.addEventListener("touchmove", this.dragMove)
+            return
+        }
+        window.addEventListener("mousemove", this.dragMove)
     }
 
-    dragStop() {
-        window.removeEventListener("pointermove", this.dragMove)
+    dragStop(e) {
+        e.type === "touchend"
+            ? window.removeEventListener("touchmove", this.dragMove)
+            : window.removeEventListener("mousemove", this.dragMove)
 
         const gap = this.xPosition - this.startX
         if (gap > 150 && this.current > 0) {
@@ -82,16 +93,21 @@ class Carousel {
     }
 
     dragMove(e) {
-        this.DragX = e.pageX;
+        if (e.type === "touchmove")
+            this.DragX = e.touches[0].clientX
+        else
+            this.DragX = e.pageX
+
         const shift = this.DragX - this.click
         const easing = shift / 5
 
         this.xPosition = Math.max(Math.min(shift + this.startX, easing), this.xMax + easing)
-        this.setPositioning()
+        this.setPositioning(this.xPosition)
     }
 
-    setPositioning() {
-        this.track.style.transform = `translate3d(${this.xPosition}px, 0, 0)`
+    setPositioning(pixels) {
+        pixels -= this.gapBetween * this.current
+        this.track.style.transform = `translate3d(${pixels}px, 0, 0)`
     }
 
     manageHTML() {
@@ -130,4 +146,59 @@ class Carousel {
         this.track.style.cursor = 'grab'
         this.track.style.transition = '0.3s ease-out all'
     }
+
+    moveLeft() {
+        if (this.current > 0) {
+            this.current -= 1
+            this.xPosition = -this.width * this.current
+            this.setPositioning(this.xPosition)
+        }
+    }
+
+    moveRight() {
+        if (this.current < this.children - 1) {
+            this.current += 1
+            this.xPosition = -this.width * this.current
+            this.setPositioning(this.xPosition)
+        }
+    }
+
+    moveOneStep(directionString) {
+        directionString === "right"
+            ? this.moveRight()
+            : this.moveLeft()
+    }
+
+    drawDots() {
+        const dotsWrapper = document.createElement('div')
+        dotsWrapper.classList.add('dots-wrapper')
+
+        for (let i = 0; i < this.children; i++) {
+            const dot = document.createElement('div')
+            dot.classList.add("dot")
+            dot.addEventListener("click", () => {
+                this.current = i
+                this.xPosition = -this.width * this.current
+                this.setPositioning(this.xPosition)
+            })
+            dotsWrapper.appendChild(dot)
+        }
+
+        this.element.after(dotsWrapper)
+    }
 }
+
+
+const gallery = document.querySelector("#gallery")
+
+const buttonRight = document.querySelector("[data-direction=right]")
+const buttonLeft = document.querySelector("[data-direction=left]")
+const buttons = [buttonLeft, buttonRight]
+
+const instance = new Carousel(gallery)
+
+buttons.forEach(buttonElem => {
+    buttonElem.addEventListener("click", e => {
+        instance.moveOneStep(e.target.dataset.direction)
+    })
+})

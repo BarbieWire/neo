@@ -14,46 +14,56 @@
         </label>
         <nav>
             {% with url_name=request.resolver_match.url_name %}
-                <a href="/" class="nav-link {% if url_name == 'main' %} highlight {% endif %}">
+                <a href="/" class="nav-link link-text-common {% if url_name == 'main' %} highlight {% endif %}">
                     {% trans 'Home' %}
                 </a>
-                <div class="nav-link" data-drop="true">
-                    <p>{% trans 'Services' %}</p>
+
+                <span class="option-selector " role="button" tabindex="0" data-drop="true">
+                    <span class="link-text-common">
+                        {% trans 'Services' %}
+                        <img src="{% static 'assets/chevron_down_black.svg' %}" alt="chevron"
+                             class="chevron-filter chevron-transform">
+                    </span>
+
                     <div class="nav-dropdown">
-                        <a href="/vacancies" class="nav-link">
+                        <a href="/vacancies">
                             {% trans 'Vacancies' %}
                         </a>
                     </div>
-                </div>
-                <a href="/about" class="nav-link {% if url_name == 'about' %} highlight {% endif %}">
+                </span>
+
+                <a href="/about" class="nav-link link-text-common {% if url_name == 'about' %} highlight {% endif %}">
                     {% trans 'About us' %}
                 </a>
-                <a href="/contact" class="nav-link {% if url_name == 'contact' %} highlight {% endif %}">
+                <a href="/contact"
+                   class="nav-link link-text-common{% if url_name == 'contact' %} highlight {% endif %}">
                     {% trans 'Contact us' %}
                 </a>
             {% endwith %}
-            <div class="lang-selector" data-drop="true">
-                {% if lang == 'ru' %}
-                    <img src="{% static 'assets/russiaflag.svg' %}" alt="flag">
-                {% else %}
-                    <img src="{% static 'assets/USAflag.svg' %}" alt="usa flag">
-                {% endif %}
-                <img src="{% static 'assets/chevron_down_gray.svg' %}" alt="down" id="dropdown-button">
+
+            <span class="option-selector lang-selector" data-drop="true">
+                <span>
+                    {% if lang == 'ru' %}
+                        <img src="{% static 'assets/russiaflag.svg' %}" alt="flag">
+                    {% else %}
+                        <img src="{% static 'assets/USAflag.svg' %}" alt="usa flag">
+                    {% endif %}
+                    <img src="{% static 'assets/chevron_down_black.svg' %}" alt="down"
+                         class="chevron-filter chevron-transform">
+                </span>
+
                 <div class="nav-dropdown">
-                    <a href="/en" data-lang="en">
-                        <div class="language-option">
-                            <p>English</p>
-                            <img src="{% static 'assets/USAflag.svg' %}" alt="flag">
-                        </div>
+                    <a href="/en" data-lang="en" class="language-option">
+                        <p>English</p>
+                        <img src="{% static 'assets/USAflag.svg' %}" alt="flag">
                     </a>
-                    <a href="/ru" data-lang="ru">
-                        <div class="language-option">
-                            <p>Русский</p>
-                            <img src="{% static 'assets/russiaflag.svg' %}" alt="flag">
-                        </div>
+
+                    <a href="/ru" data-lang="ru" class="language-option">
+                        <p>Русский</p>
+                        <img src="{% static 'assets/russiaflag.svg' %}" alt="flag">
                     </a>
                 </div>
-            </div>
+            </span>
         </nav>
     </div>
 </header>

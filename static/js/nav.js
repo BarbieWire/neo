@@ -1,7 +1,10 @@
 class Navbar {
     constructor() {
         this.navbar = document.querySelector("#navbar")
-        this.navbar.addEventListener('click', this.handleDropdowns)
+
+        this.handleDropdowns = this.handleDropdowns.bind(this)
+        this.handleDropdowns()
+
         this.language = this.parseLang()
         this.alterHrefs()
         this.locationWithinWebsite = location.pathname.split("/").slice(2).join("/")
@@ -26,10 +29,13 @@ class Navbar {
         location.pathname = `${lang}/${this.locationWithinWebsite}`
     }
 
-    handleDropdowns(event) {
-        const element = event.target.parentElement
-        if (!element.dataset.drop) return
-        element.classList.toggle("active")
+    handleDropdowns() {
+        this.dropdowns = this.navbar.querySelectorAll("[data-drop=true]")
+        this.dropdowns.forEach(item => {
+            item.addEventListener("click", () => {
+                item.classList.toggle("active")
+            })
+        })
     }
 
     handleLinks() {

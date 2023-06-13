@@ -11,13 +11,11 @@
 {% block content %}
     <section class="main-section">
         <div class="container">
-            <div class="box__wrapper">
+            <div class="box-wrapper">
                 <div class="text-box">
                     <hr class="line">
                     <h1 class="title">{% trans 'Contact us' %}</h1>
-                    <p class="desc">
-                        {% trans 'Have a question? Feel free to contact us. Our team will try to respond you back as soon as possible' %}
-                    </p>
+                    <p class="desc">{% trans 'Have a question? Feel free to contact us. Our team will try to respond you back as soon as possible' %}</p>
                     <h4>
                         {% trans 'Or you can use your phone to get in touch with us:' %}
                     </h4>
@@ -27,30 +25,25 @@
                 <div class="input-box">
                     <form action="{% url 'contact' %}" method="post">
                         {% csrf_token %}
-                        <div class="input__wrapper">
-                            <input
-                                    type="text"
-                                    class="inline-input"
-                                    placeholder="{% trans 'Name' %}"
-                                    name="name"
-                                    tabindex="1"
-                                    required
-                            >
-                            <input
-                                    type="email"
-                                    class="inline-input"
-                                    placeholder="{% trans 'Email' %}"
-                                    name="email"
-                                    tabindex="2"
-                                    required
-                            >
+                        <div class="field">
+                            <input type="text" required autocomplete="off" id="name" tabindex="1"
+                                   class="input_field">
+                            <label for="name" title="{% trans 'Name' %}" data-title="{% trans 'Name' %}"></label>
                         </div>
-                        <textarea
-                                placeholder="{% trans 'Message' %}"
-                                tabindex="3"
-                                name="message"
-                                required
-                        ></textarea>
+
+
+                        <div class="field">
+                            <input type="text" required autocomplete="off" id="email" tabindex="1"
+                                   class="input_field">
+                            <label for="email" title="{% trans 'Email' %}" data-title="{% trans 'Email' %}"></label>
+                        </div>
+
+
+                        <div class="field">
+                            <textarea tabindex="3" name="message" required id="message" class="input_field"></textarea>
+                            <label for="message" title="{% trans 'Message' %}"
+                                   data-title="{% trans 'Message' %}"></label>
+                        </div>
                         <button type="submit" tabindex="4">{% trans 'Submit' %}</button>
                     </form>
                 </div>

@@ -2,20 +2,11 @@
     min-height: 90vh;
 }
 
-.box__wrapper {
-    padding-top: 280px;
+.box-wrapper {
+    padding-top: 27%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-}
-
-.line {
-    width: 150px;
-    height: 3px;
-    border: none;
-    outline: none;
-    background-color: var(--soft-green);
-    margin-bottom: 26px;
 }
 
 .title {
@@ -24,8 +15,9 @@
 
 .desc {
     max-width: 320px;
-    line-height: 25px;
+    line-height: 20px;
     color: var(--text-gray);
+    font-family: var(--title-family)
 }
 
 .text-box h4 {
@@ -34,8 +26,13 @@
     font-size: 18px;
 }
 
-
-.input-box {
+.text-box hr {
+    width: 150px;
+    height: 3px;
+    border: none;
+    outline: none;
+    background-color: var(--soft-green);
+    margin-bottom: 26px;
 }
 
 .inline-input {
@@ -51,25 +48,25 @@
     outline: none;
 }
 
+.input-box {
+    width: 40%;
+}
+
 .input-box form textarea {
-    width: 430px;
     height: 120px;
     resize: none;
     display: block;
     font-family: inherit;
     padding: 13px;
-    border: 1px solid var(--text-gray);
 }
 
-.input__wrapper {
-    margin-bottom: 18px;
+.align-fields {
     display: flex;
     justify-content: space-between;
 }
 
 .input-box form button[type=submit] {
     float: right;
-    margin-top: 47px;
     width: 177px;
     height: 40px;
     border: none;
@@ -83,4 +80,75 @@
 
 .input-box form button[type=submit]:hover {
     background-color: #658837;
+}
+
+.label-before, .field .input_field:focus + label::before, .field .input_field:valid + label::before {
+    line-height: 20px;
+    font-size: 12px;
+    top: -10px;
+    background: #fff;
+    padding: 0 6px;
+    left: 9px;
+}
+
+.field {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.field label::before {
+    content: attr(title);
+    position: absolute;
+    top: 0;
+    left: 15px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #777;
+    transition: 300ms all;
+}
+
+.field input, .field textarea {
+    width: 100%;
+    line-height: 40px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #222;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.field input:focus,
+.field textarea:focus {
+    outline: 0;
+    border-color: var(--soft-green);
+}
+
+.field .input_field:valid + label::before {
+    content: attr(data-title);
+}
+
+.field .input_field:focus + label::before {
+    color: var(--soft-green);
+}
+
+@media screen and (max-width: 720px) {
+    .input-box {
+        width: 100%;
+    }
+
+    .text-box {
+        width: 100%;
+    }
+
+    .box-wrapper {
+        padding-top: 40%;
+        display: flex;
+        gap: 50px;
+    }
+
+    .input-box form button[type=submit] {
+        width: 100%;
+        float: left;
+    }
 }
