@@ -1,4 +1,5 @@
 {% load static %}
+{% load compress %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,9 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Sio Neo Logistics</title>
+
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+    {% compress css %}
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'css/footer.scss' %}">
+    {% endcompress %}
 
     <script src="{% static 'js/utils.js' %}"></script>
 

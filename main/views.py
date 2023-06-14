@@ -7,7 +7,7 @@ from .models import ContactUsModel, Vacancy
 
 class Main(View):
     def get(self, request, *args, **kwargs):
-        return render(request, template_name='main/index.html')
+        return render(request, template_name='main/home.html')
 
 
 class Contact(View):

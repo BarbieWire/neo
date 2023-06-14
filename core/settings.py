@@ -13,6 +13,26 @@ SECRET_KEY = 'django-insecure-s(=-*3-gfr#d=xa7(kfkkurhs&0o2!9qwde$awbg%^r#olp&e&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+# if not DEBUG:
+#     STATIC_ROOT = os.path.join(BASE_DIR, "makestatic/static/")
+
+
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+COMPRESS_PRECOMPILERS = (
+    (
+        'text/x-scss',
+        'django_libsass.SassCompiler'
+    ),
+)
+
 ALLOWED_HOSTS = [
     "127.0.0.1:8000",
     "localhost:8000",
@@ -24,15 +44,14 @@ ALLOWED_HOSTS = [
 # Application definition
 INSTALLED_APPS = [
     'modeltranslation',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'main',
+    'compressor'
 ]
 
 MIDDLEWARE = [
@@ -117,13 +136,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-
-STATIC_URL = 'static/'
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, "makestatic/static/")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

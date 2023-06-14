@@ -1,0 +1,188 @@
+{% extends "main/base.html" %}
+
+{% load compress %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block links %}
+    {% compress css %}
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'css/home.scss' %}">
+    {% endcompress %}
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'js/Carousel/base.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main class="main-content">
+        <section class="section-main">
+            <div class="container">
+                <div class="section-main__content-wrapper">
+                    <h1 class="section-main__title">Sia Neo Logistics</h1>
+                    <p class="section-main__company-description">
+                        {% trans 'A warehouse logistics center.' %}<br>
+                        {% trans 'Convenient access roads, within the city of Riga.' %} <br>
+                        {% trans 'Experienced staff and more than 10 years of successful experience in logistics' %}
+                    </p>
+                    <div class="section-main__scroll">
+                        <a href="#section-features"><span></span>Scroll</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-features" id="section-features">
+            <div class="container">
+                <div class="section-features__features-wrapper">
+                    <div class="section-features__feature-container">
+                        <div class="section-features__icon">
+                            <img src="{% static 'assets/icons/cube.svg' %}" alt="cube">
+                        </div>
+                        <div class="section-features__text-block">
+                            <h2 class="section-features__title">{% trans 'Storage' %}</h2>
+                            <p class="section-features__description">
+                                {% trans 'The technical capabilities of the warehouse allow storage of up to 3200 pallets, on the territory of 4000 m2, while performing the processing of goods.' %}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="section-features__feature-container">
+                        <div class="section-features__icon">
+                            <img src="{% static 'assets/icons/thermometer.svg' %}" alt="thermometer">
+                        </div>
+                        <h2 class="section-features__title">{% trans 'Storage temperature' %}</h2>
+                        <p class="section-features__description">
+                            {% trans 'Storage temperature in winter up to +10 degrees. There are modular storage rooms with lower temperature conditions.' %}
+                        </p>
+                    </div>
+
+                    <div class="section-features__feature-container">
+                        <div class="section-features__icon">
+                            <img src="{% static 'assets/icons/alert.svg' %}" alt="alert">
+                        </div>
+                        <h2 class="section-features__title">{% trans 'Safety' %}</h2>
+                        <p class="section-features__description">
+                            {% trans 'The warehouse has video surveillance and an alarm system that complies withall regulatory enactments of the Latvian excise legislation.' %}
+                        </p>
+                    </div>
+
+                    <div class="section-features__feature-container">
+                        <div class="section-features__icon">
+                            <img src="{% static 'assets/icons/guaranties.svg' %}" alt="guaranties">
+                        </div>
+                        <h2 class="section-features__title">{% trans 'Guaranties' %}</h2>
+                        <p class="section-features__description">
+                            {% trans 'The warehouse also has an excise or customs guarantee and a transit guarantee.' %}
+                        </p>
+                    </div>
+
+                    <div class="section-features__feature-container">
+                        <div class="section-features__icon">
+                            <img src="{% static 'assets/icons/pull.svg' %}" alt="equip">
+                        </div>
+                        <h2 class="section-features__title">{% trans 'Equipment' %}</h2>
+                        <p class="section-features__description">
+                            {% trans 'The warehouse is partially equipped with 3 and 4 tier racks. Our company has the appropriate equipment for scanning excise stamps.' %}
+                        </p>
+                    </div>
+
+                    <div class="section-features__feature-container">
+                        <div class="section-features__icon">
+                            <img src="{% static 'assets/icons/llock.svg' %}" alt="lock">
+                        </div>
+                        <h2 class="section-features__title">{% trans 'Territory' %}</h2>
+                        <p class="section-features__description">
+                            {% trans "The warehouse complex is a separate fenced area, with round-the-clock physical security. Possibility to park vehicles for a long time." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-partners">
+            <div class="container">
+                <div class="section-partners__wrapper">
+                    <div class="section-partners__stroke">
+                        <hr class="section-partners__half-line">
+                        <p>{% trans 'Partners' %}</p>
+                        <hr class="section-partners__half-line">
+                    </div>
+                    <div class="section-partners__logo-wrapper">
+                        <img src="{% static 'assets/logos/download 1.png' %}" alt="logo">
+                        <img src="{% static 'assets/logos/5-inservis 1.png' %}" alt="logo">
+                        <img src="{% static 'assets/logos/download 2.png' %}" alt="logo">
+                        <img src="{% static 'assets/logos/download 3.png' %}" alt="logo">
+                    </div>
+                    <hr class="section-partners__bottom-line">
+                </div>
+            </div>
+        </section>
+        <section class="section-gallery">
+            <div class="section-gallery__background">
+                <div class="container">
+                    <div class=section-gallery__gallery-wrapper>
+                        <div class="section-gallery__text-block">
+                            <h2 class="section-gallery__title">{% trans 'Gallery' %}</h2>
+                            <p class="section-gallery__description">
+                                Lorem Ipsum is simply dummy
+                                text of the printing and typesetting industry. Lorem
+                                Ipsum has been the industry's standard dummy
+                                text ever since the 1500s, when an unknown printer took
+                                a galley of type and scrambled it to make a type specimen book.
+                                It has survived not only five
+                                centuries, but also the leap into electronic typesetting,
+                                remaining essentially unchanged. It was
+                                popularised in the 1960s with the release of
+                                Letraset sheets containing Lorem Ipsum passages, and
+                                more recently with desktop publishing software like
+                                Aldus PageMaker including versions of Lorem Ipsum.
+                            </p>
+                        </div>
+                        <div class="gallery-container" id="gallery-container">
+                            <object data="{% static 'assets/3 dots.svg' %}"
+                                    class="gallery-container__dots gallery-container__dots--three"></object>
+                            <object data="{% static 'assets/9 dots.svg' %}"
+                                    class="gallery-container__dots gallery-container__dots--nine"></object>
+
+                            <button class="gallery-container__button gallery-container__button--left"
+                                    data-direction="left">
+                                <img src="{% static 'assets/chevron_left.svg' %}" alt="left">
+                            </button>
+
+                            <div class="gallery-container__gallery" id="gallery">
+                                <img src="{% static 'assets/carousel/3.jpg' %}" alt="" class="gallery-container__slide">
+                                <img src="{% static 'assets/carousel/2.jpg' %}" alt="" class="gallery-container__slide">
+                                <img src="{% static 'assets/carousel/1.jpg' %}" alt="" class="gallery-container__slide">
+                            </div>
+
+                            <button class="gallery-container__button gallery-container__button--right"
+                                    data-direction="right">
+                                <img src="{% static 'assets/chevron_right.svg' %}" alt="right">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <button class="scroll-top" id="page-up">
+            <img src="{% static 'assets/double_chevron_up.svg' %}" alt="pg-up">
+        </button>
+    </main>
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'js/nav.js' %}"></script>
+    <script src="{% static 'js/Carousel/script.js' %}"></script>
+    <script defer>
+        const scrollTop = document.querySelector("#page-up")
+        const header = document.querySelector(".header-blank")
+
+        scrollTop.addEventListener("click", () => scrollTo(0, 0))
+
+        function handleScroll() {
+            header.classList.toggle("active", window.scrollY > 0)
+            scrollTop.classList.toggle("active", window.scrollY > 0)
+        }
+
+        window.addEventListener("scroll", handleScroll)
+    </script>
+{% endblock %}

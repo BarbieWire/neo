@@ -34,6 +34,8 @@ class Carousel {
         this.track.style.display = "flex"
         this.track.style.gap = this.gapBetween + "px"
 
+        this.track.style.overflow = "hidden"
+
         this.NodesArr.forEach((slide) => {
             slide.style.width = this.width + "px"
         })
@@ -194,6 +196,8 @@ const gallery = document.querySelector("#gallery")
 const buttonRight = document.querySelector("[data-direction=right]")
 const buttonLeft = document.querySelector("[data-direction=left]")
 const buttons = [buttonLeft, buttonRight]
+
+console.log(gallery, buttons)
 
 const instance = new Carousel(gallery)
 
