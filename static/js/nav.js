@@ -6,7 +6,6 @@ class Navbar {
         this.handleDropdowns()
 
         this.language = this.parseLang()
-        this.alterHrefs()
         this.locationWithinWebsite = location.pathname.split("/").slice(2).join("/")
 
         if (this.locationWithinWebsite)
@@ -16,17 +15,6 @@ class Navbar {
 
     parseLang() {
         return location.pathname.split("/").slice(0, 2)[1]
-    }
-
-    alterHrefs() {
-        const links = this.navbar.querySelectorAll("[data-lang]")
-        links.forEach(link => link.addEventListener("click", e => this.handleLanguage(e, link)))
-    }
-
-    handleLanguage(e, link) {
-        e.preventDefault()
-        const lang = link.dataset.lang
-        location.pathname = `${lang}/${this.locationWithinWebsite}`
     }
 
     handleDropdowns() {

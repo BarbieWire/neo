@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 
     {% compress css %}
-    <link rel="stylesheet" type="text/x-scss" href="{% static 'css/footer.scss' %}">
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'css/cookiePopUp.scss' %}">
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'css/footer.scss' %}">
     {% endcompress %}
 
     <script src="{% static 'js/utils.js' %}"></script>
@@ -22,12 +23,16 @@
     {% endblock %}
 </head>
 <body>
+
 {#  Header  #}
 {% include 'main/components/header.html' %}
 
 {% block content %}
     {#  Content here  #}
 {% endblock %}
+
+{# Cookie alert #}
+{% include 'main/components/cookiePopUp.html' %}
 
 {#  Footer  #}
 {% include 'main/components/footer.html' %}

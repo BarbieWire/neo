@@ -1,30 +1,46 @@
+
+
 class DragTrack {
     constructor() {
         this.track = document.querySelector("#track");
+        this.track.style.display = "flex"
+
+        this.gap = 30
+        this.track.style.gap = `${this.gap}px`
+
         this.nodes = document.querySelectorAll(".flex-option");
+
         this.point = 0;
         this.dragX = 0;
         this.colorize();
         this.onMouseMove = this.onMouseMove.bind(this);
         this.trackLenght = this.resizeTrack();
+
+        this.track.style.width = this.trackLenght + "px"
+
         this.isMobile = window.detectMobile();
-        if (this.trackLenght > window.innerWidth) {
+        if (this.trackLenght > window.innerWidth / 2) {
             this.trackInitialize();
         }
     }
 
     trackInitialize() {
+        if (this.isMobile) {
+            this.track.parentElement.style.overflowX = "scroll"
+            this.track.parentElement.style.width = "100%"
+        }
+
         this.track.style.cursor = "grab"
-        this.track.addEventListener(this.isMobile ? 'touchstart' : 'mousedown', e => {
+        this.track.addEventListener('mousedown', e => {
             e.preventDefault()
-            const pageX = this.isMobile ? e.changedTouches[0].pageX : e.pageX
-            this.dragX <= -100 ? this.point = 0 : this.point = this.dragX + pageX
-            this.track.addEventListener(this.isMobile ? 'touchmove' : 'mousemove', this.onMouseMove)
             this.track.style.cursor = "grabbing"
+            const pageX = e.pageX
+            this.dragX <= -100 ? this.point = 0 : this.point = this.dragX + pageX
+            this.track.addEventListener('mousemove', this.onMouseMove)
         })
-        window.addEventListener(this.isMobile ? 'touchend' : 'mouseup', e => {
+        window.addEventListener('mouseup', e => {
             e.preventDefault()
-            this.track.removeEventListener(this.isMobile ? 'touchmove' : 'mousemove', this.onMouseMove)
+            this.track.removeEventListener('mousemove', this.onMouseMove)
             this.track.style.cursor = "grab"
         })
     }
@@ -40,13 +56,7 @@ class DragTrack {
     }
 
     resizeTrack() {
-        const margin = 30
-        this.nodes.forEach((node, index) => {
-            if (index === 0) return
-            node.style.marginLeft = `${margin}px`
-        })
-
-        const trackLength = (this.nodes[0].getBoundingClientRect().width * this.nodes.length) + margin * this.nodes.length + margin
+        const trackLength = (this.nodes[0].getBoundingClientRect().width * this.nodes.length) + this.gap * this.nodes.length - 1
         this.track.style.width = `${trackLength}px`
         return trackLength
     }

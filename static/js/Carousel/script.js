@@ -197,8 +197,6 @@ const buttonRight = document.querySelector("[data-direction=right]")
 const buttonLeft = document.querySelector("[data-direction=left]")
 const buttons = [buttonLeft, buttonRight]
 
-console.log(gallery, buttons)
-
 const instance = new Carousel(gallery)
 
 buttons.forEach(buttonElem => {

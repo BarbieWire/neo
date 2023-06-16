@@ -10,7 +10,7 @@
 
 {% block content %}
     <section class="main-section">
-        <div class="container">
+        <div class="container container--track-wrapper">
             <div class="text-box">
                 <hr class="line">
                 <h1 class="title">{% trans 'Vacancies' %}</h1>
@@ -18,154 +18,20 @@
                     {% trans "A list of available job opportunities company provides at the moment" %}
                 </p>
             </div>
-        </div>
-        <div class="container">
-            {#            {% regroup vacancies by category as category_list %}#}
-            {#            {% for group in category_list %}#}
-            {#                <div class="box-align">#}
-            {#                    <h2 class="category_title">{{ group.grouper }}</h2>#}
-            {#                    <div class="jobs__wrapper">#}
-            {##}
-            {#                        {% for vacancie in group.list %}#}
-            {#                            <div class="job">#}
-            {#                                <hr/>#}
-            {#                                <div class="data__wrapper">#}
-            {#                                    <h3>{{ vacancie.name }}</h3>#}
-            {#                                    {% if vacancie.salary_to %}#}
-            {#                                        <p>~{{ vacancie.salary_from }}€ - {{ vacancie.salary_to }}€</p>#}
-            {#                                    {% else %}#}
-            {#                                        <p>{{ vacancie.salary_from }}€</p>#}
-            {#                                    {% endif %}#}
-            {#                                </div>#}
-            {#                            </div>#}
-            {#                        {% endfor %}#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            {% endfor %}#}
-
-
             <div class="strip__wrapper">
                 <div class="track" id="track">
-                    <div class="flex-option">
-                        <div class="upper-tab"></div>
-                        <div class="lower-tab">
-                            <h3 class="vacancies-name">Marker</h3>
-                            <div class="play">
-                                <img src="{% static 'assets/plus.svg' %}" alt="play-btn" class="svg-play">
+                    {% for vacancy in vacancies %}
+                        <div class="flex-option">
+                            <div class="upper-tab"></div>
+                            <div class="lower-tab">
+                                <h3 class="vacancies-name">{{ vacancy.name }}</h3>
+                                <div class="play">
+                                    <img src="{% static 'assets/plus.svg' %}" alt="play-btn" class="svg-play">
+                                </div>
+                                <p class="par">Try yourself at {{ vacancy.name }}’s position in our company</p>
                             </div>
-                            <p class="par">Try yourself at marker’s position in our company</p>
                         </div>
-                    </div>
-                    <div class="flex-option">
-                        <div class="upper-tab"></div>
-                        <div class="lower-tab">
-                            <h3 class="vacancies-name">Marker</h3>
-                            <div class="play">
-                                <img src="{% static 'assets/plus.svg' %}" alt="play-btn" class="svg-play">
-                            </div>
-                            <p class="par">Try yourself at marker’s position in our company</p>
-                        </div>
-                    </div>
-                    <div class="flex-option">
-                        <div class="upper-tab"></div>
-                        <div class="lower-tab">
-                            <h3 class="vacancies-name">Marker</h3>
-                            <div class="play">
-                                <img src="{% static 'assets/plus.svg' %}" alt="play-btn" class="svg-play">
-                            </div>
-                            <p class="par">Try yourself at marker’s position in our company</p>
-                        </div>
-                    </div>
-                    <div class="flex-option">
-                        <div class="upper-tab"></div>
-                        <div class="lower-tab">
-                            <h3 class="vacancies-name">Marker</h3>
-                            <div class="play">
-                                <img src="{% static 'assets/plus.svg' %}" alt="play-btn" class="svg-play">
-                            </div>
-                            <p class="par">Try yourself at marker’s position in our company</p>
-                        </div>
-                    </div>
-                    <div class="flex-option">
-                        <div class="upper-tab"></div>
-                        <div class="lower-tab">
-                            <h3 class="vacancies-name">Marker</h3>
-                            <div class="play">
-                                <img src="{% static 'assets/plus.svg' %}" alt="play-btn" class="svg-play">
-                            </div>
-                            <p class="par">Try yourself at marker’s position in our company</p>
-                        </div>
-                    </div>
-                    <div class="flex-option">
-                        <div class="upper-tab"></div>
-                        <div class="lower-tab">
-                            <h3 class="vacancies-name">Marker</h3>
-                            <div class="play">
-                                <img src="{% static 'assets/plus.svg' %}" alt="play-btn" class="svg-play">
-                            </div>
-                            <p class="par">Try yourself at marker’s position in our company</p>
-                        </div>
-                    </div>
-                    <div class="flex-option">
-                        <div class="upper-tab"></div>
-                        <div class="lower-tab">
-                            <h3 class="vacancies-name">Marker</h3>
-                            <div class="play">
-                                <img src="{% static 'assets/plus.svg' %}" alt="play-btn" class="svg-play">
-                            </div>
-                            <p class="par">Try yourself at marker’s position in our company</p>
-                        </div>
-                    </div>
-                    <div class="flex-option">
-                        <div class="upper-tab"></div>
-                        <div class="lower-tab">
-                            <h3 class="vacancies-name">Marker</h3>
-                            <div class="play">
-                                <img src="{% static 'assets/plus.svg' %}" alt="play-btn" class="svg-play">
-                            </div>
-                            <p class="par">Try yourself at marker’s position in our company</p>
-                        </div>
-                    </div>
-                    <div class="flex-option">
-                        <div class="upper-tab"></div>
-                        <div class="lower-tab">
-                            <h3 class="vacancies-name">Marker</h3>
-                            <div class="play">
-                                <img src="{% static 'assets/plus.svg' %}" alt="play-btn" class="svg-play">
-                            </div>
-                            <p class="par">Try yourself at marker’s position in our company</p>
-                        </div>
-                    </div>
-                    <div class="flex-option">
-                        <div class="upper-tab"></div>
-                        <div class="lower-tab">
-                            <h3 class="vacancies-name">Marker</h3>
-                            <div class="play">
-                                <img src="{% static 'assets/plus.svg' %}" alt="play-btn" class="svg-play">
-                            </div>
-                            <p class="par">Try yourself at marker’s position in our company</p>
-                        </div>
-                    </div>
-                    <div class="flex-option">
-                        <div class="upper-tab"></div>
-                        <div class="lower-tab">
-                            <h3 class="vacancies-name">Marker</h3>
-                            <div class="play">
-                                <img src="{% static 'assets/plus.svg' %}" alt="play-btn" class="svg-play">
-                            </div>
-                            <p class="par">Try yourself at marker’s position in our company</p>
-                        </div>
-                    </div>
-                    <div class="flex-option">
-                        <div class="upper-tab"></div>
-                        <div class="lower-tab">
-                            <h3 class="vacancies-name">Marker</h3>
-                            <div class="play">
-                                <img src="{% static 'assets/plus.svg' %}" alt="play-btn" class="svg-play">
-                            </div>
-                            <p class="par">Try yourself at marker’s position in our company</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -174,6 +40,7 @@
 
 
 {% block scripts %}
-    <script src="{% static 'js/nav.js' %}"></script>
-    <script src="{% static 'js/dragTrack.js' %}"></script>
+    <script src="{% static 'js/nav.js' %}" defer></script>
+
+    <script src="{% static 'js/dragTrack.js' %}" defer></script>
 {% endblock %}

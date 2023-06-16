@@ -136,10 +136,13 @@
 
 
 .language-option {
+    all: unset;
+    cursor: pointer;
     display: flex;
     margin-top: 5px;
-    justify-content: space-between;
+
     gap: 10px;
+    width: 100%;
 }
 
 .nav-dropdown > a {
@@ -147,13 +150,16 @@
     color: black;
 }
 
-.language-option p {
+.language-option span {
     color: black;
 }
 
 
 @media screen and (max-width: 768px) {
-
+    .nav-dropdown > form {
+        display: flex;
+        gap: 10px;
+    }
 
     .header-blank {
         padding: 0.9em;

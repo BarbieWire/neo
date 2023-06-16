@@ -1,0 +1,41 @@
+.cookie-tip {
+    position: fixed;
+    height: min-content;
+    bottom: 10px;
+    gap: 25px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+
+    &__text {
+        color: white;
+        width: 320px;
+    }
+
+    &__button {
+        all: unset;
+        background: white;
+        color: black;
+        padding: 5px 20px 5px 20px;
+        border-radius: 5px;
+        font-weight: 700;
+        font-family: var(--title-family);
+        font-size: 14px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cookie-tip {
+        right: 10px;
+
+        &__text {
+            gap: 10px;
+        }
+    }
+}

@@ -44,24 +44,34 @@
             <span class="option-selector lang-selector" data-drop="true">
                 <span>
                     {% if lang == 'ru' %}
-                        <img src="{% static 'assets/russiaflag.svg' %}" alt="flag">
+                        <img src="{% static 'assets/ruflag.svg' %}" alt="flag">
                     {% else %}
-                        <img src="{% static 'assets/USAflag.svg' %}" alt="usa flag">
+                        <img src="{% static 'assets/enflag.svg' %}" alt="usa flag">
                     {% endif %}
                     <img src="{% static 'assets/chevron_down_black.svg' %}" alt="down"
                          class="chevron-filter chevron-transform">
                 </span>
 
                 <div class="nav-dropdown">
-                    <a href="/en" data-lang="en" class="language-option">
-                        <p>English</p>
-                        <img src="{% static 'assets/USAflag.svg' %}" alt="flag">
-                    </a>
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
 
-                    <a href="/ru" data-lang="ru" class="language-option">
-                        <p>Русский</p>
-                        <img src="{% static 'assets/russiaflag.svg' %}" alt="flag">
-                    </a>
+                        {% get_current_language as current_language %}
+                        {% get_available_languages as languages %}
+
+                        {% for lang_code, lang_name in languages %}
+                            <button class="language-option" type="submit" value="{{ lang_code }}" name="language">
+                                {% with string1="assets/" string2=lang_code string3="flag.svg" %}
+                                    {% with filename=string1|add:string2|add:string3 %}
+                                        <img src="{% static filename %}" alt="flag">
+                                    {% endwith %}
+                                {% endwith %}
+
+                                <span>{{ lang_name }}</span>
+                            </button>
+                        {% endfor %}
+
+                    </form>
                 </div>
             </span>
         </nav>

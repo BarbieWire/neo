@@ -4,10 +4,12 @@ from .forms import ContactUsForm
 
 from .models import ContactUsModel, Vacancy
 
+from django.utils import translation
+
 
 class Main(View):
     def get(self, request, *args, **kwargs):
-        return render(request, template_name='main/home.html')
+        return render(request, template_name='main/Home.html')
 
 
 class Contact(View):
@@ -37,3 +39,19 @@ class Vacancies(View):
             template_name='main/Vacancies.html',
             context=context
         )
+
+
+def set_language(request):
+    if request.method == 'POST':
+        language = request.POST.get('language')
+
+        if language:
+            translation.activate(language)
+            response = redirect(request.POST.get('next', 'home'))  # Redirect to the desired page
+            response.set_cookie(
+                'django_language',
+                language,
+                max_age=31536000,  # Set the cookie to expire after a year
+            )
+            return response
+    return redirect('home')

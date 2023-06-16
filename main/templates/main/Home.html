@@ -9,7 +9,7 @@
     {% compress css %}
         <link rel="stylesheet" type="text/x-scss" href="{% static 'css/home.scss' %}">
     {% endcompress %}
-    <link rel="stylesheet" type="text/x-scss" href="{% static 'js/Carousel/base.css' %}">
+    <link rel="stylesheet" href="{% static 'js/Carousel/base.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -36,12 +36,12 @@
                         <div class="section-features__icon">
                             <img src="{% static 'assets/icons/cube.svg' %}" alt="cube">
                         </div>
-                        <div class="section-features__text-block">
-                            <h2 class="section-features__title">{% trans 'Storage' %}</h2>
-                            <p class="section-features__description">
-                                {% trans 'The technical capabilities of the warehouse allow storage of up to 3200 pallets, on the territory of 4000 m2, while performing the processing of goods.' %}
-                            </p>
-                        </div>
+
+                        <h2 class="section-features__title">{% trans 'Storage' %}</h2>
+                        <p class="section-features__description">
+                            {% trans 'The technical capabilities of the warehouse allow storage of up to 3200 pallets, on the territory of 4000 m2, while performing the processing of goods.' %}
+                        </p>
+
                     </div>
 
                     <div class="section-features__feature-container">
@@ -100,18 +100,27 @@
         <section class="section-partners">
             <div class="container">
                 <div class="section-partners__wrapper">
-                    <div class="section-partners__stroke">
-                        <hr class="section-partners__half-line">
-                        <p>{% trans 'Partners' %}</p>
-                        <hr class="section-partners__half-line">
-                    </div>
+
+                    <h2 class="section-partners__title">{% trans 'Partners' %}</h2>
+                    <p>We are collaborating with different companies all across the Baltics, and there is always place for you</p>
+
                     <div class="section-partners__logo-wrapper">
-                        <img src="{% static 'assets/logos/download 1.png' %}" alt="logo">
-                        <img src="{% static 'assets/logos/5-inservis 1.png' %}" alt="logo">
-                        <img src="{% static 'assets/logos/download 2.png' %}" alt="logo">
-                        <img src="{% static 'assets/logos/download 3.png' %}" alt="logo">
+                        <div class="section-partners__block">
+                            <img src="{% static 'assets/logos/download 1.png' %}" alt="logo">
+
+                        </div>
+                        <div class="section-partners__block">
+                             <img src="{% static 'assets/logos/5-inservis 1.png' %}" alt="logo">
+
+                        </div>
+                        <div class="section-partners__block">
+                            <img src="{% static 'assets/logos/download 2.png' %}" alt="logo">
+
+                        </div>
+                        <div class="section-partners__block">
+                            <img src="{% static 'assets/logos/download 3.png' %}" alt="logo">
+                        </div>
                     </div>
-                    <hr class="section-partners__bottom-line">
                 </div>
             </div>
         </section>
